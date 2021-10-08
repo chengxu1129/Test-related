@@ -13,6 +13,8 @@ def achieveWeather(url):
     resp=requests.get(url)
     resp.encoding='utf-8'
     text=resp.json()
+    print(resp.status_code)
+    assert resp.status_code==200
     maxRH,minRH =text['DYN_DAT_MINDS_FND']['Day3MaxRH'],text['DYN_DAT_MINDS_FND']['Day3MinRH']
     return f'相对湿度{minRH["Val_Chi"]}-{maxRH["Val_Chi"]}%'
 
